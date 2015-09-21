@@ -1,7 +1,6 @@
-/*import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
-import edu.princeton.cs.algs4.Stopwatch;
-*/
+
 public class PercolationStats {
     private double[] threshold;
  
@@ -17,7 +16,7 @@ public class PercolationStats {
     for (int k = 0; k < T; k++) {
         percolation = new Percolation(N);
 
-        do {
+        while (!percolation.percolates()) {
         i = StdRandom.uniform(N) + 1;
         j = StdRandom.uniform(N) + 1;
 
@@ -27,9 +26,8 @@ public class PercolationStats {
             percolation.open(i, j);
             opensites++;
         }
-        } while (!percolation.percolates());
-        percolation=null;
-        threshold[k] = opensites / (double) (N * N); // opensites/totalsites
+        } 
+         threshold[k] = opensites / (double) (N * N); // opensites/totalsites
      }
 
     }
